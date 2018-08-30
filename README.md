@@ -1,2 +1,1 @@
-# -learning-resource
-java学习资源
+Welcome!!! This is Palmer's personal blog.
