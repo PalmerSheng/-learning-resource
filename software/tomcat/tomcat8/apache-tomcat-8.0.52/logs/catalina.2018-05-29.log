@@ -1,0 +1,46 @@
+29-May-2018 10:31:03.639 严重 [main] org.apache.catalina.startup.Catalina.stopServer Could not contact localhost:8005. Tomcat may not be running.
+29-May-2018 10:31:06.180 警告 [main] org.apache.tomcat.util.digester.SetPropertiesRule.begin [SetPropertiesRule]{Server/Service/Engine/Host/Context} Setting property 'source' to 'org.eclipse.jst.jee.server:WebChat-master' did not find a matching property.
+29-May-2018 10:31:06.185 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.0.52
+29-May-2018 10:31:06.186 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Apr 28 2018 16:24:29 UTC
+29-May-2018 10:31:06.186 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.0.52.0
+29-May-2018 10:31:06.186 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Windows 10
+29-May-2018 10:31:06.186 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            10.0
+29-May-2018 10:31:06.186 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+29-May-2018 10:31:06.187 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             C:\Program Files\Java\jdk1.8.0_172\jre
+29-May-2018 10:31:06.187 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           1.8.0_172-b11
+29-May-2018 10:31:06.187 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+29-May-2018 10:31:06.187 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         F:\java文件\tomcat\tomcat8\apache-tomcat-8.0.52
+29-May-2018 10:31:06.188 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         F:\java文件\tomcat\tomcat8\apache-tomcat-8.0.52
+29-May-2018 10:31:06.188 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=F:\java文件\tomcat\tomcat8\apache-tomcat-8.0.52\conf\logging.properties
+29-May-2018 10:31:06.188 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+29-May-2018 10:31:06.189 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+29-May-2018 10:31:06.189 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+29-May-2018 10:31:06.189 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dignore.endorsed.dirs=
+29-May-2018 10:31:06.190 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=F:\java文件\tomcat\tomcat8\apache-tomcat-8.0.52
+29-May-2018 10:31:06.193 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=F:\java文件\tomcat\tomcat8\apache-tomcat-8.0.52
+29-May-2018 10:31:06.201 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=F:\java文件\tomcat\tomcat8\apache-tomcat-8.0.52\temp
+29-May-2018 10:31:06.202 信息 [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent Loaded APR based Apache Tomcat Native library 1.2.16 using APR version 1.6.3.
+29-May-2018 10:31:06.203 信息 [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+29-May-2018 10:31:07.011 信息 [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL successfully initialized (OpenSSL 1.0.2m  2 Nov 2017)
+29-May-2018 10:31:07.367 信息 [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-apr-8080"]
+29-May-2018 10:31:07.379 信息 [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-apr-8009"]
+29-May-2018 10:31:07.382 信息 [main] org.apache.catalina.startup.Catalina.load Initialization processed in 1752 ms
+29-May-2018 10:31:07.417 信息 [main] org.apache.catalina.core.StandardService.startInternal Starting service Catalina
+29-May-2018 10:31:07.417 信息 [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.0.52
+29-May-2018 10:31:10.522 信息 [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+29-May-2018 10:31:13.929 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory F:\java文件\tomcat\tomcat8\apache-tomcat-8.0.52\webapps\docs
+29-May-2018 10:31:14.076 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory F:\java文件\tomcat\tomcat8\apache-tomcat-8.0.52\webapps\docs has finished in 146 ms
+29-May-2018 10:31:14.077 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory F:\java文件\tomcat\tomcat8\apache-tomcat-8.0.52\webapps\examples
+29-May-2018 10:31:16.162 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory F:\java文件\tomcat\tomcat8\apache-tomcat-8.0.52\webapps\examples has finished in 2,085 ms
+29-May-2018 10:31:16.163 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory F:\java文件\tomcat\tomcat8\apache-tomcat-8.0.52\webapps\host-manager
+29-May-2018 10:31:16.230 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory F:\java文件\tomcat\tomcat8\apache-tomcat-8.0.52\webapps\host-manager has finished in 68 ms
+29-May-2018 10:31:16.230 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory F:\java文件\tomcat\tomcat8\apache-tomcat-8.0.52\webapps\manager
+29-May-2018 10:31:16.278 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory F:\java文件\tomcat\tomcat8\apache-tomcat-8.0.52\webapps\manager has finished in 48 ms
+29-May-2018 10:31:16.280 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory F:\java文件\tomcat\tomcat8\apache-tomcat-8.0.52\webapps\ROOT
+29-May-2018 10:31:16.329 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory F:\java文件\tomcat\tomcat8\apache-tomcat-8.0.52\webapps\ROOT has finished in 49 ms
+29-May-2018 10:31:16.329 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory F:\java文件\tomcat\tomcat8\apache-tomcat-8.0.52\webapps\WebChat-master
+29-May-2018 10:31:18.120 信息 [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+29-May-2018 10:31:20.863 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory F:\java文件\tomcat\tomcat8\apache-tomcat-8.0.52\webapps\WebChat-master has finished in 4,534 ms
+29-May-2018 10:31:20.876 信息 [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-apr-8080"]
+29-May-2018 10:31:20.985 信息 [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["ajp-apr-8009"]
+29-May-2018 10:31:20.993 信息 [main] org.apache.catalina.startup.Catalina.start Server startup in 13609 ms

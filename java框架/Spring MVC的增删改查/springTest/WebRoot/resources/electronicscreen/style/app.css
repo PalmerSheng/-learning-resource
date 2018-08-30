@@ -1,0 +1,185 @@
+/*
+* @Author: cmh
+* @Date:   2017-03-07 14:53:01
+* @Last Modified by:   Administrator
+* @Last Modified time: 2017-04-01 10:32:36
+*/
+html, body, div, img, span, p {
+    margin: 0;
+    padding: 0;
+}
+h2, h1 {
+    margin: 80px 0 45px;
+}
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden
+}
+.clearfix {
+    *+height: 1%;
+}
+html, body {
+    width: 100%;
+    height: 100%;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    text-align: center;
+    font-family: 'Microsoft Yahei'
+}
+
+/*rightTopBody*/
+.rightTopBody {
+    background-image: url(../img/rightTopBg.jpg);
+}
+.rightTopBody .title {
+    font-size: 49px;
+    color: #fff;
+    font-weight: normal;
+}
+.rightTopBody .city {
+    font-size: 30px;
+    color: #fff;
+    margin: 10px;
+}
+.rightTopBody .weather {
+    width:875px;
+    margin: 4% auto 0;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 18px 18px 24px rgba(0, 0, 0, .3);
+    padding: 45px 0;
+}
+.rightTopBody .weather .neme{font-size: 40px;color:#555;}
+.rightTopBody .weather .weather_content{overflow: hidden;padding: 20px 90px 0;}
+.rightTopBody .weather .weather_content img{float: left;width: 230px;}
+.rightTopBody .weather .weather_content .right{float: left;padding-left: 50px;text-align: left;line-height: 189px;font-size: 40px;color:#555;}
+#mobile6 .mleft {
+    display: none;
+}
+
+/*rightCenter*/
+.rightCenterBody {
+    background-image: url(../img/rightCenter.jpg);
+}
+.rightCenterBody .title {
+    font-size: 60px;
+    color: #f5e33c;
+    font-weight: 500;
+    width: auto;
+    display: inline-block;
+}
+.rightCenterBody .title img {
+    float: left;
+    width: 65px;
+    vertical-align: middle;
+}
+.rightCenterBody .contant {
+    width: 877px;
+    height: 430px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 18px 18px 24px rgba(0, 0, 0, .3);
+    margin-top: 35px;
+}
+.rightCenterBody .contant .left {
+    float: left;
+    margin: 26px 0 39px 110px;
+    font-weight: bold;
+}
+.rightCenterBody .contant .left p {
+    font-size: 40px;
+    color: #093587;
+    padding-left: 30px;
+    text-align: left;
+    margin-top: 18px;
+}
+.rightCenterBody .contant .left p span {
+    color: #ff0000;
+}
+.rightCenterBody .contant .right {
+    float: left;
+    height: 100%;
+    margin-left: 115px;
+}
+.rightCenterBody .contant .right img {
+    height: 40%;
+    margin-top: 76%;
+}
+
+/*rightFooter*/
+.rightFooterBody {
+    background-image: url(../img/rightFooter.jpg)
+}
+.rightFooterBody .title {
+    font-size: 60px;
+    color: #f5e33c;
+    font-weight: 500;
+    width: auto;
+    display: inline-block;
+}
+.rightFooterBody .title img {
+    height: 50px;
+    display: inline-block;
+    float: left;
+    margin-right: 15px;
+}
+.rightFooterBody .contant {
+    width: 880px;
+    margin: 0 auto;
+}
+.rightFooterBody .contant img {
+    float: left;
+    margin: 0px 0 0 10px;
+    width: 279px;
+}
+.rightFooterBody .contant .people {
+    width: 506px;
+    float: right;
+    background-color: #fff;
+    border-radius: 15px;
+    height: 300px;
+    margin-top: 29px;
+    display: table;
+    box-shadow: 18px 18px 24px rgba(0, 0, 0, .3);
+    box-sizing: border-box;
+}
+.rightFooterBody .contant .people .words {
+    display: table-cell;
+    vertical-align: middle;
+}
+.rightFooterBody .contant .people h2 {
+    color: #093587;
+    font-size: 30px;
+    margin: 30px 0;
+}
+.rightFooterBody .contant .people p {
+    color: #333;
+    font-size: 35px;
+    position: relative;
+    padding-left: 109px;
+    line-height: 53px;min-height: 53px;
+}
+.rightFooterBody .contant .people p .left {
+    color: #093587;
+    position: absolute;
+    left: 78px;
+    white-space: nowrap;
+}
+.rightFooterBody .another {
+    width: 800px;
+    margin: 31px auto 0;
+}
+.rightFooterBody .another li {
+    list-style-type: none;
+    width: 50%;
+    float: left;
+    text-align: left;
+    font-size: 35px;
+    color: #333;
+    line-height: 55px;
+}

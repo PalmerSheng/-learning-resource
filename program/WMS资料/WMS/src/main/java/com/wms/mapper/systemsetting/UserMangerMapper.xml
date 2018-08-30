@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wms.mapper.systemsetting.UserMangerMapper">
+
+	<select id="selUser" resultType="com.wms.model.UserInfo">
+
+		SELECT
+		id,
+		username,
+		usercode,
+		PASSWORD,
+		unit_code,
+		LEVEL,
+		user_state,
+		tel
+		FROM
+		userinfo
+		WHERE
+		1 = 1
+		<if test="username and username!=''">
+			and username like '%${username}%'
+		</if>
+		<if test="usercode!=null and usercode!=''">
+			and usercode like '%${usercode}%'
+		</if>
+	</select>
+	<delete id="delUser">
+		delete from userinfo where usercode=#{usercode}
+
+	</delete>
+	
+	<update id="updateUserInfo" parameterType="com.wms.model.UserInfo">
+    UPDATE userinfo
+    <set>
+    
+      <if test="password != null and password != ''">
+        password = #{password},
+      </if>
+      <if test="username != null and username != ''">
+        username = #{username},
+      </if>
+      <if test="level != null and level != ''">
+        level = #{level},
+      </if>
+      <if test="user_state != null and user_state != ''">
+        user_state = #{user_state},
+      </if>
+      <if test="tel != null and tel != ''">
+        tel = #{tel},
+      </if>
+      
+      
+    </set>
+    WHERE usercode = #{usercode}
+  </update>
+</mapper>

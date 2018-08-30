@@ -1,0 +1,51 @@
+package com.sf.controller;
+
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.alibaba.druid.sql.visitor.functions.Trim;
+import com.sf.model.Log;
+import com.sf.service.LogService;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+
+import java.util.List;
+
+/**
+ * 
+ * @author : sf
+ * @time   : 2018年7月31日  下午4:44:56 
+ * @TODO   :
+ */
+@Controller
+@RequestMapping(value = "")
+public class LogController {
+
+    @Resource
+    private LogService logService;
+    
+    /**
+     * 加载log
+     * @param userid
+     * @param page
+     * @return
+     */
+    @RequestMapping(value = "{userid}/log")
+    public ModelAndView selectAll(@PathVariable("userid") String userid,HttpServletRequest req) {
+        Integer  page=(req.getParameter("page")==null ? 1:Integer.parseInt(req.getParameter("page").trim()));
+		Integer limit=(req.getParameter("limit")==null ? 5:Integer.parseInt(req.getParameter("limit").trim()));
+ 
+        ModelAndView view = new ModelAndView("log");
+        List<Log> list = logService.selectLogByUserid(userid, page, limit);
+        int count = logService.selectCountByUserid(userid, limit);
+        view.addObject("list", list);
+        view.addObject("count", count);
+        return view;
+    }
+
+}

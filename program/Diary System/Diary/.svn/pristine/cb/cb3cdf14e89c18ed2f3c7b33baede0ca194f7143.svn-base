@@ -1,0 +1,141 @@
+package com.sf.service.impl;
+
+import java.text.SimpleDateFormat;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.omg.CosNaming.NamingContextExtPackage.StringNameHelper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.util.SocketUtils;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+
+import com.sf.mapper.LoginMapper;
+
+import com.sf.model.UserInfo;
+import com.sf.service.LoginService;
+import com.sf.util.BackMessage;
+import com.sf.util.CommonDate;
+import com.sf.util.WordDefined;
+
+@Service
+public class LoginServiceImpl implements LoginService {
+
+	@Autowired
+	private LoginMapper loginMapper;
+
+	
+	/*public BackMessage goIndex(HttpServletRequest req,HttpServletResponse res,WordDefined defined,HttpSession session
+			,CommonDate date){
+		try {
+			boolean flag = false;
+			String usercode = getParam("usercode");
+			String password = getParam("password");
+			String code = getParam("code");
+			
+			String servercode = (String)session.getAttribute("code");
+			if(!code.equals(servercode)){
+				
+				return new BackMessage(1, defined.LOGIN_VERTIFYCODE_ERROR);
+			}
+			UserInfo userInfo = loginMapper.getUser(usercode);
+			if (userInfo == null) {
+				return new BackMessage(1, defined.LOGIN_USERID_ERROR);
+
+			} else {
+				if (!userInfo.getPassword().equals(password)) {
+					return new BackMessage(1, defined.LOGIN_PASSWORD_ERROR);
+
+				} else {
+					
+					
+					if (!userInfo.getStatus().trim().equals("0")) {
+						return new BackMessage(1, defined.LOGIN_USERID_DISABLED);
+
+					} else {
+						
+						userInfo.setLasttime(date.getTime24());
+
+						flag = loginMapper.updateUser(userInfo);
+						if(flag == false){
+							return new BackMessage(1, defined.LOGIN_LASTTIME_ERROR);
+						}else{
+							session.setAttribute("loginUser", userInfo);
+							session.setAttribute("login_status", true);
+							//登录成功
+							return new BackMessage(0, defined.LOGIN_SUCCESS);
+						}
+
+
+
+					}
+				}
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return new BackMessage(1,defined.LOGIN_UNEXPECTED_ERROR);
+		}
+
+
+	}*/
+	
+	
+	
+	public BackMessage goRegister(HttpServletRequest req,HttpServletResponse res,WordDefined defined,
+			HttpSession session
+			,CommonDate date){
+		try {
+			boolean flag = false;
+			String userid = getParam("userid");
+			String password = getParam("password");
+			String checkPassword = getParam("checkPassword");
+			String nickName = getParam("nickName");
+			
+			if(!password.equals(checkPassword)){
+				return new BackMessage(1, defined.REG_PASSWORD_ERROR);
+			}
+			
+			UserInfo userInfo = loginMapper.getUser(userid);
+			if (userInfo != null) {
+				//已存在该用户
+				return new BackMessage(1, defined.REG_USERID_ERROR);
+
+			} else {
+				userInfo = new UserInfo();
+				userInfo.setUserid(userid);
+				userInfo.setPassword(password);
+				
+				userInfo.setStarttime(date.getTime24());
+				userInfo.setLasttime(date.getTime24());
+				userInfo.setNickname(nickName);
+				flag = loginMapper.addUser(userInfo);
+				if(flag == false){
+					return new BackMessage(1, defined.REG_ADDUSER_ERROR);
+				}else{
+					userInfo = loginMapper.getUser(userid);
+					session.setAttribute("loginUser", userInfo);
+					session.setAttribute("login_status", true);
+					//登录成功
+					return new BackMessage(0, defined.REG_SUCCESS);
+				}
+				
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return new BackMessage(1,defined.REG_ERROR);
+		}
+
+	}
+	
+	public String getParam(String name){
+		HttpServletRequest req = ((ServletRequestAttributes) RequestContextHolder
+                .getRequestAttributes()).getRequest();
+		return (req.getParameter(name) == null ? "" :(req.getParameter(name).trim()));
+	}
+
+}

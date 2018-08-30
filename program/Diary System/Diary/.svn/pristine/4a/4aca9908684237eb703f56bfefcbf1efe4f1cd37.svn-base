@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sf.mapper.LoginMapper">
+<select id="getUser" resultType="com.sf.model.UserInfo">
+select * from userinfo where usercode = #{usercode}
+</select>
+<update id="updateUser" parameterType="com.sf.model.UserInfo">
+    UPDATE userinfo
+    <set>
+      <if test="password != null and password != ''">
+        PASSWORD = #{password},
+      </if>
+      <if test="nickname != null and nickname != ''">
+        NICKNAME = #{nickname},
+      </if>
+      <if test="starttime != null and starttime != ''">
+        starttime = #{starttime},
+      </if>
+      <if test="lasttime != null and lasttime != ''">
+        LASTTIME = #{lasttime},
+      </if>
+      <if test="state != null and state != ''">
+        state = #{state},
+      </if>
+    </set>
+    WHERE usercode = #{usercode}
+  </update>
+  
+  <insert id="addUser" parameterType="com.sf.model.UserInfo">
+  insert into userinfo(usercode,password,nickname,starttime,lasttime) 
+  values(#{usercode},#{password},#{nickname},#{starttime},#{lasttime})
+  
+  </insert>
+</mapper>

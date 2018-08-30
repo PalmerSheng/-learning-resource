@@ -1,0 +1,130 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="utf-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="ctx" value="${pageContext.request.contextPath}"/>
+<%
+	String path = request.getContextPath();
+%>
+<html>
+<head>
+    <title>WebChat | 系统日志</title>
+    <jsp:include page="include/commonfile.jsp"/>
+    <link rel="stylesheet" href="<%=path%>/static/layui/css/layui.css">
+<script src="<%=path%>/static/layui/layui.js"></script>
+</head>
+<body>
+<jsp:include page="include/header.jsp"/>
+<div class="am-cf admin-main">
+    <jsp:include page="include/sidebar.jsp"/>
+
+   <%--  <!-- content start -->
+    <div class="admin-content">
+        <div class="am-cf am-padding">
+            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">系统日志</strong> / <small>log</small></div>
+        </div>
+        <div class="am-tabs am-margin">
+            <table class="am-table am-table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>用户名</th>
+                        <th>时间</th>
+                        <th>详情</th>
+                        <th>IP</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <c:forEach items="${list}" var="log" varStatus="status">
+                        <tr>
+                            
+                            <td width="30">${status.index + 1}</td>
+                            <td width="100">${log.userid}</td>
+                            <td width="100">${log.time}</td>
+                          
+                            <td width="100">${log.detail}</td>
+                            <td width="100">${log.ip}</td>
+                        
+                        </tr>
+                    </c:forEach>
+                </tbody>
+            </table>
+            <div id="page" style="float: right"></div>
+        </div>
+    </div>
+    <!-- content end --> --%>
+    
+    
+    <table id="sample_table" lay-filter="sample_table"></table>
+</div>
+<a href="#" class="am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}">
+    <span class="am-icon-btn am-icon-th-list"></span>
+</a>
+<div style="display:none" hidden="hidden"  id="count_field">${count }</div>
+
+<%-- <input type="hidden"  value="${num}" id="num"> --%>
+<jsp:include page="include/footer.jsp"/>
+
+<script>
+layui.use(['form','layer','table'],function(){
+    var   form = layui.form,
+        layer = layui.layer, table = layui.table;
+    
+    form.render();
+        
+
+	
+});
+/*  var totalNum =parseInt( $("#count_field").text());
+var nums = 5;
+
+var currpage=document.getElementById("num").value;
+var pages = Math.ceil(totalNum/nums); */
+    /* $(function(){
+        laypage({
+            cont: 'page',
+            pages: pages,
+            
+            curr:currpage, */
+            /* skin: '#AF0000',
+            groups: 5, //连续显示分页数
+            first: '首页'
+                ,last: '尾页',
+                
+            jump: function(e, first){ //触发分页后的回调
+                if(!first){ //一定要加此判断，否则初始时会无限刷新
+                    location.href = '?page='+e.curr;
+                }
+            }
+        });
+    });  */
+    
+    function initTable() {
+        var tableInts = table.render({
+            elem: '#sample_table',
+            url: "/Diary/"+userid+"/log",
+            cols: [[
+               
+                {field:'id', title: '#', width:30, fixed: true}
+                ,{field:'town_name', title: '用户名', width:120,}
+                ,{field:'village_name', title: '时间', width:100}
+                ,{field:'grop', title: '详情', width:80}
+                ,{field:'ordinarymode_name', title: 'IP', width:120}
+                
+            ]],
+            id: 'tableReload',
+            page: true,
+            limit: 5,
+            even: true,
+            where: {
+               
+               	
+            },
+            done: function(data){
+               
+            }
+        });
+    }
+
+    initTable();
+</script>
+</body>
+</html>

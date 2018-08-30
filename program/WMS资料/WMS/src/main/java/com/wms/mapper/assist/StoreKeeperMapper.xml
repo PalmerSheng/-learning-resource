@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wms.mapper.assist.StoreKeeperMapper">
+
+
+<!-- 修改信息表 -->
+<update id="UpdateStoreKeeperInfo">
+		UPDATE userinfo,unitinfo
+SET username=#{username},
+password = #{password},
+		 tel=#{tel},
+unitinfo.depart=#{depart},
+unitinfo.group1=#{group}
+     	WHERE userinfo.unit_code = unitinfo.code
+		and unit_code=#{unit_code}
+
+		
+</update>
+
+<!-- 新增信息表 -->
+<insert id="InsertStoreKeeperInfo">
+
+		INSERT INTO  userinfo(
+		username,
+		usercode,
+		password,
+		unit_code,
+		level,
+		user_state,
+		tel
+		)
+		VALUES
+		( #{username}, #{usercode}, #{password}, #{unit_code},'4','0',#{tel});
+		
+		INSERT INTO  unitinfo(
+		depart,
+		group1,
+		code
+		)
+		VALUES
+		(#{depart}, #{group}, #{unit_code})
+	</insert>
+
+	
+	
+<!-- 删除信息 -->
+<delete id="DeleteStoreKeeperInfo" parameterType="com.wms.model.UserInfoModel">
+	 Delete from userinfo where  1=1
+	    <if test="job.username!=null and job.username!=''">
+			and username=#{job.username}
+		</if>
+		<if test="job.usercode!=null and job.usercode!=''">
+			and
+	        usercode=#{job.usercode} 
+		</if>
+		<if test="job.unit_code!=null and job.unit_code!=''">
+			and
+	        unit_code=#{job.unit_code}
+		</if>	
+		<if test="job.tel!=null and job.tel!=''">
+			and
+	        tel=#{job.tel};
+	        Delete from unitinfo where  1=1
+	    <if test="job.depart!=null and job.depart!=''">
+			and depart=#{job.depart}
+		</if>
+		<if test="job.group!=null and job.group!=''">
+			and
+	        group1=#{job.group} 
+		</if>
+		<if test="job.code!=null and job.code!=''">
+			and
+	        code=#{job.code}
+		</if>	
+		</if>	
+</delete>
+
+
+
+<!-- 查询信息 -->
+<select id="StoreKeeperInfo" resultType="com.wms.model.UserInfoModel">
+		SELECT userinfo.id,usercode ,username,password,unit_code,level,tel,
+unitinfo.code,unitinfo.depart,unitinfo.group1
+FROM userinfo LEFT JOIN unitinfo on userinfo.unit_code=unitinfo.code
+where 1=1 
+		<if test="usercode!=null and usercode!=''">
+			and usercode like '${usercode}%'
+		</if>
+		<if test="username!=null and username!=''">
+			and username like '${username}%'
+		</if>
+</select>
+
+</mapper>

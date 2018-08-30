@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wms.mapper.storemanagement.SumStoreMapper">
+
+	<select id="sumStore" resultType="com.wms.model.BackOrTakeModel">
+
+		SELECT
+		id,
+		goods_code,
+		goods_name,
+		goods_num,
+		time,
+		single_money
+		FROM
+		goods;
+
+	</select>
+
+</mapper>

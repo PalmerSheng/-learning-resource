@@ -1,0 +1,21 @@
+@charset "UTF-8";
+/**
+ * 
+ * @authors Sunruixin
+ * @date    2016-12-29 17:12:00
+ */
+.areaselect{
+	width: 100%;
+}
+.areaselect>label{
+	float: left;
+	width: 25%;
+	cursor: pointer;
+	margin: 5px 0px;
+	font-size: 12px;
+	color: #333;
+}
+.areaselect>label>input[type="checkbox"]{
+	vertical-align: middle;
+	margin-right: 10px;
+}

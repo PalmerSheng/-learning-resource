@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>商品调拨</title>
+    <link rel="stylesheet"href="../../plugins/css/layuicss.css">
+    <link rel="stylesheet"href="../../plugins/layui/css/layui.css">
+    <link rel="stylesheet" href="../../build/css/app.css" media="all">
+    <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
+    <link rel="stylesheet" type="text/css" href="css/Replenish_Manage.css">
+</head>
+<body class="layui-layout-body">
+<div style="margin-left: auto;text-align: center"> <!--左外边距自适应、居中-->
+    <p style="padding: 20px;font-size: 30px;color:black;font-weight: bold">
+        商品调拨
+    </p>
+</div>
+<div style="height: auto;min-width: 1200px">
+    <form id="entryForm" lay-filter="formTest"  class="layui-form" onsubmit="return false">
+        <div class="button-contain layui-form">
+            <div class="layui-form-item lable-div">
+                <label class="layui-form-label">商品号：</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" style="width:200px" id="commodity_code"name="commodity_code">
+                </div>
+            </div>
+            <div class="layui-form-item lable-div">
+                <label class="layui-form-label">商品数量：</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" style="width:200px" id="number"name="number">
+                </div>
+            </div>
+            <div class="layui-form-item lable-div">
+                <label class="layui-form-label">商品单位：</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" style="width:200px" id="commodity_unit"name="commodity_unit">
+                </div>
+            </div>
+
+            <div class="layui-form-item lable-div">
+                <label class="layui-form-label">调拨人：</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" style="width:200px" id="Transfer_name"name="stock_code">
+                </div>
+            </div>
+            <div class="layui-form-item lable-div">
+                <label class="layui-form-label">负责人：</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" style="width:200px" id="douser_code"name="stock_code">
+                </div>
+            </div>
+            <div class="layui-form-item lable-div">
+                <label class="layui-form-label">调配地区：</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" style="width:200px" id="stocked_code"name="stocked_code">
+                </div>
+            </div>
+            <button class="layui-btn layui-btn-normal"id="save"style="display:block;margin-left: 48%">提交</button>
+        </div>
+    </form>
+</div>
+</body>
+<script src="../../plugins/layui-2.3.0/layui/layui.js"></script>
+<script src="js/Commodity_Transfer.js"></script>
+</html>

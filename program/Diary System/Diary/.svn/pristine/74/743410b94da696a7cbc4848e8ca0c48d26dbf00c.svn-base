@@ -1,0 +1,67 @@
+package com.sf.service.impl;
+
+
+import org.springframework.stereotype.Service;
+
+import com.sf.mapper.LogMapper;
+import com.sf.model.Log;
+import com.sf.service.LogService;
+import com.sf.util.StringUtil;
+
+import javax.annotation.Resource;
+import java.util.List;
+
+
+@Service
+public class LogServiceImpl implements LogService {
+
+	@Resource private LogMapper logMapper;
+	@Resource private Log log;
+
+	@Override
+	public List<Log> selectAll(int page, int pageSize) {
+		return logMapper.selectAll(page, pageSize);
+	}
+
+	@Override
+	public List<Log> selectLogByUserid(String userid, int  page, int limit) {
+
+		Integer offset = page * (page - 1) + 1;   
+		return logMapper.selectLogByUserid(userid, offset, limit);
+	}
+
+	@Override
+	public int selectCount(int pageSize) {
+		int pageCount = Integer.parseInt(logMapper.selectCount().getUserid());
+		return pageCount % pageSize == 0 ? pageCount/pageSize : pageCount/pageSize + 1;
+	}
+
+	@Override
+	public int selectCountByUserid(String userid, int limit) {
+		int pageSize =limit;
+		int pageCount = Integer.parseInt(logMapper.selectCountByUserid(userid).getUserid());
+		return pageCount % pageSize == 0 ? pageCount/pageSize : pageCount/pageSize + 1;
+	}
+
+
+	@Override
+	public boolean insert(Log log) {
+		//        log.setId(StringUtil.getGuid());
+		return logMapper.insert(log);
+	}
+
+	@Override
+	public boolean delete(String id) {
+		return logMapper.delete(id);
+	}
+
+	@Override
+	public boolean deleteThisUser(String userid) {
+		return logMapper.deleteThisUser(userid);
+	}
+
+	@Override
+	public boolean deleteAll() {
+		return logMapper.deleteAll();
+	}
+}

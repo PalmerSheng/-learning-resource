@@ -1,0 +1,115 @@
+一：新建web工程，勾选xml。
+
+二：新建servlet，注意一下xml的配置
+
+三：构建Dao类
+1.dao类的作用：
+ dao类是将数据库的连接内容封装成一个类，将连接数据库，释放资源等操作封装成具体的方法，
+ 方便操作过程中调用。
+
+2.连接数据库的顺序：
+
+ ①加入驱动
+
+ ②开启连接
+
+ ③执行sql
+
+ ④获得返回值
+
+ ⑤关闭资源
+
+
+3.代码实现：
+
+ ①加入驱动
+      static{
+		 try {
+			Class.forName(Driver);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	 }
+
+ ②开启连接 
+     public static Connection getConnection(){
+		 try {
+			conn = DriverManager.getConnection(url,user,psw);
+			return conn;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	 }
+③执行sql
+     String sql = "select * from news";
+	ResultSet rs = null;
+	PreparedStatement ps = null;
+         ps = conn.prepareStatement(sql);
+
+④获得返回值
+  rs = ps.executeQuery();
+		while(rs.next()){
+			Sstuname = rs.getString("name");
+			Spassword =rs.getString("pasw");
+			System.out.println(rs.getString("name"));
+			System.out.println(rs.getString("pasw"));
+		}
+
+⑤关闭资源
+  
+public static void closeConnection(Connection conn,PreparedStatement ps,ResultSet rs){
+		 if(rs != null){
+			 try {
+				rs.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		 }
+		 if(ps != null){
+			 try {
+				ps.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		 }
+		 if(conn != null){
+			 try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		 }
+	 }
+
+}
+
+4.知识点简介：
+
+  static{
+
+   }
+
+  这是静态代码块，他的作用是让包含在块内的所有内容在编译的过程中优先编译，并且块内的内容是可以被
+  本类中所有方法都可以共享。在封装数据库连接dao类中，用静态代码块来保证驱动在dao类所有方法之前执
+  行，保证了dao类的方法在调用时可以正常执行。（关于static的其他知识点回忆）
+
+  conn = DriverManager.getConnection(url,user,psw);
+  开启数据库连接的方法很简单，驱动包里定义了一个连接方法，传递到参数是数据库的url（数据库链接地址），
+  user数据库用户名，paw数据库密码。
+   
+  closeConnection(Connection conn,PreparedStatement ps,ResultSet rs)
+
+  关闭数据库连接资源是很重要的一步，首先得注意一下代码里的关闭资源的顺序。根据先后执行的顺讯逆序关闭
+  已经打开的资源。其次，为什么要判空？ 很明显，没有打开的东西为什么还要关闭？ 不要觉得这段关闭代码多
+  余，如果你去应聘公司，面试官让你写出关闭连接的代码，写成3行的那种和写成最后这种明显是不同的，虽然相
+  比多出很多代码，不过你把这些关闭代码提取到一个类中去，通过参数传递conn,ps,rs，只需要写这一遍就可以
+  一直用下去。
+
+
+

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wms.mapper.query.StockQueryMapper">
+<!-- 加载表 -->
+<select id="GetStockInfo" resultType="com.wms.model.GoodsModel">
+ SELECT id, goods_code,goods_name,goods_num,time,single_money
+FROM goods 
+</select>
+<!-- 查询信息 -->
+<select id="StockQuery" resultType="com.wms.model.GoodsModel">
+		SELECT goods_code ,goods_name,goods_num,time,single_money
+FROM goods
+where 1=1
+		<if test="goods_code!=null and goods_code!=''">
+			and goods_code like '${goods_code}%'
+		</if>
+		<if test="goods_name!=null and goods_name!=''">
+			and goods_name like '${goods_name}%'
+		</if>
+	</select>
+</mapper>

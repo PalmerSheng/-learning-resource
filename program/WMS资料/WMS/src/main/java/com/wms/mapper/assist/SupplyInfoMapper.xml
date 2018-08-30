@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wms.mapper.assist.SupplyInfoMapper">
+
+
+<!-- 新增信息表 -->
+<insert id="InsertSupplyInfo">
+		INSERT INTO  supplyinfo(
+		supply_name ,tel,supply_code,duty_name
+		)
+		VALUES
+		('${supply_name}', '${tel}',  '${supply_code}','${duty_name}')
+	</insert>
+<!-- 删除信息 -->
+<delete id="DeleteSupplyInfo" parameterType="com.wms.model.SupplyInfoModel">
+	 Delete from supplyinfo where  supply_code=#{supply_code}
+	   
+</delete>
+<!-- 修改信息 -->
+<update id="UpdateSupplyInfo">
+		UPDATE supplyinfo
+		SET
+		
+		 supply_name=#{supply_name},
+		 tel=#{tel},
+		 duty_name=#{duty_name}
+		WHERE supply_code=#{supply_code}
+</update>
+<!-- 查询信息 -->
+<select id="Info" resultType="com.wms.model.SupplyInfoModel">
+		SELECT supply_name ,tel,supply_code,duty_name
+FROM supplyinfo
+where 1=1
+		<if test="supply_name!=null and supply_name!=''">
+			and supply_name like '${supply_name}%'
+		</if>
+		<if test="supply_code!=null and supply_code!=''">
+			and supply_code like '${supply_code}%'
+		</if>
+	</select>
+
+</mapper>

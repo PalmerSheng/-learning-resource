@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>库区管理</title>
+    <link rel="stylesheet" href="../../plugins/layui/css/layui.css" media="all">
+    <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
+    <link rel="stylesheet" href="../../build/css/app.css" media="all">
+    <link rel="stylesheet" href="../../plugins/css/style.css">
+    <link rel="stylesheet" href="../PersonalManage/css/Supplier_Information_Manage.css">
+    <script src="../../plugins/layui/layui.js"></script>
+    <script src="../../util/util.js"></script>
+</head>
+
+<script type="text/html" id="btn_wraper">
+    <a class="layui-btn layui-btn-normal layui-btn-mini" lay-event="edit">修改</a>
+</script>
+<style>
+</style>
+<body>
+<div style="margin-left: auto;text-align: center">
+    <p style="padding: 20px;font-size: 30px;color:black;font-weight: bold">
+        库区管理
+    </p>
+</div>
+
+<div class="button-contain layui-form" style="height: auto;min-width: 1200px">
+    <div class="layui-form-item layui-form lable-div">
+        <label class="layui-form-label">库区ID</label>
+        <div class="layui-input-block">
+            <select name="ReservoirID" lay-verify="required" lay-filter="selFilter" id="ReservoirID"></select>
+            <option value=""></option>
+        </div>
+    </div>
+
+
+
+    <button class="layui-btn layui-btn-normal right_bootom" id="add">添加库区信息</button>
+    <button class="layui-btn layui-btn-normal right_bootom" id="delectCheckData">删除选中信息</button>
+    <button class="layui-btn layui-btn-normal right_bootom" id="search">查询</button>
+
+
+    <table id="Reservoir_table" lay-filter="Reservoir_table"></table>
+
+</div>
+<form class="layui-form" id="alert_edit_form" onsubmit="return false" style="display: none">
+    <div class="layui-form-item lable-div" style="width: auto">
+        <label class="layui-form-label">库区ID:</label>
+        <div class="layui-input-block" style="width: 200px">
+            <input type="text" id="ID" name="ID" placeholder="请输入库区ID " class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item lable-div" style="width: auto">
+        <label class="layui-form-label">库区名:</label>
+        <div class="layui-input-block" style="width: 200px">
+            <input type="text" id="StoreRoom_Name" name="StoreRoom_Name" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item lable-div" style="width: auto">
+        <label class="layui-form-label">库区位置:</label>
+        <div class="layui-input-block" style="width: 200px">
+            <input type="text" id="Store_location" name="Store_location" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item lable-div" style="width: auto">
+        <label class="layui-form-label">库房所含库区id:</label>
+        <div class="layui-input-block" style="width: 200px">
+            <input type="number" id="Store_ID" name="Store_ID" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item" >
+        <div class="layui-input-block right_bootom">
+            <button class="layui-btn" lay-submit lay-filter="demo1">立即提交</button>
+            <button id="closeLayer" class="layui-btn layui-btn-primary">关闭</button>
+        </div>
+    </div>
+</form>
+<form class="layui-form" id="alert_add_form" onsubmit="return false" style="display: none">
+    <div class="layui-form-item lable-div" style="width: auto">
+        <label class="layui-form-label">库房ID:</label>
+        <div class="layui-input-block" style="width: 200px">
+            <input type="text" id="ID2" name="ID2" placeholder="请输入库房ID " class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item lable-div" style="width: auto">
+        <label class="layui-form-label">库房名:</label>
+        <div class="layui-input-block" style="width: 200px">
+            <input type="text" id="StoreRoom_Name2" name="StoreRoom_Name2" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item lable-div" style="width: auto">
+        <label class="layui-form-label">库房位置:</label>
+        <div class="layui-input-block" style="width: 200px">
+            <input type="text" id="Store_location2" name="Store_location2" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item lable-div" style="width: auto">
+        <label class="layui-form-label">库房所含库区id:</label>
+        <div class="layui-input-block" style="width: 200px">
+            <input type="number" id="Store_ID2" name="Store_ID2" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item" >
+        <div class="layui-input-block right_bootom">
+            <button class="layui-btn" lay-submit lay-filter="demo2">立即提交</button>
+            <button id="closeLayer2" class="layui-btn layui-btn-primary">关闭</button>
+        </div>
+    </div>
+</form>
+</body>
+<script src="js/Reservoir_Manage.js"></script>
+</html>

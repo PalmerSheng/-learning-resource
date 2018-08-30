@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wms.mapper.login.LoginMapper">
+<select id="getUser" resultType="com.wms.model.UserInfo">
+select * from userinfo where usercode = #{usercode}
+</select>
+<insert id="addUser" parameterType="com.wms.model.UserInfo">
+  insert into userinfo(usercode,password,username) 
+  values(#{usercode},#{password},#{username})
+  
+  </insert>
+  
+  <select id="getqueryMenu" resultType="com.wms.model.LoginLeftBar">
+SELECT privilegeinfo.* FROM userprivilege
+LEFT JOIN privilegeinfo on userprivilege.privilegeid = privilegeinfo.id
+where userprivilege.level =#{level}
+ORDER BY privilegeinfo.treelevel
+</select>
+</mapper>

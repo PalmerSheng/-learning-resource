@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wms.mapper.storemanagement.OnOrOutStoreMapper">
+
+	<!-- 退货 -->
+	<insert id="backStore01">
+		<!--相当于for循环，依次查找与数据库相匹配的数据，并且进行更新 -->
+		<foreach collection="list" item="item" index="index" open=""
+			close="" separator=";">
+			INSERT INTO buy_return (
+			id,
+			goods_code,
+			goods_num,
+			supply_code,
+			user_code,
+			time,
+			sum_money,
+			single_money,
+			state
+			)
+			VALUES
+			(
+			NULL,<!-- '121','121','121',
+			'121',null,'121',
+			'121','121') -->
+			
+			#{item.goods_code},#{item.goods_num},#{item.supply_code},
+			#{item.user_code},#{item.time},#{item.sum_money},
+			#{item.single_money},#{item.state})
+
+		</foreach>
+	</insert>
+
+	<update id="backStore02">
+		<!--相当于for循环，依次查找与数据库相匹配的数据，并且进行更新 -->
+		<foreach collection="list" item="item" index="index" open=""
+			close="" separator=";">
+			UPDATE goods
+			SET goods_num = goods_num +
+			#{item.goods_num},time=#{item.time}
+			WHERE
+			goods_code = #{item.goods_code}
+		</foreach>
+	</update>
+
+	<insert id="backStore03">
+		<!--相当于for循环，依次查找与数据库相匹配的数据，并且进行更新 -->
+		<foreach collection="list" item="item" index="index" open=""
+			close="" separator=";">
+			INSERT INTO goods (
+			id,
+			goods_code,
+			goods_name,
+			goods_num,
+			time,
+			single_money
+			)
+			VALUES
+			(
+			NULL,
+			#{item.goods_code},#{item.goods_name},#{item.goods_num},
+			#{item.time},#{item.single_money}
+			);
+		</foreach>
+	</insert>
+
+	<!-- 取货 -->
+	<insert id="takeStore01">
+		<!--相当于for循环，依次查找与数据库相匹配的数据，并且进行更新 -->
+		<foreach collection="list" item="item" index="index" open=""
+			close="" separator=";">
+			INSERT INTO buy_return (
+			id,
+			goods_code,
+			goods_num,
+			supply_code,
+			user_code,
+			time,
+			sum_money,
+			single_money,
+			state
+			)
+			VALUES
+			(
+			NULL,
+			#{item.goods_code},#{item.goods_num},#{item.supply_code},
+			#{item.user_code},#{item.time},#{item.sum_money},
+			#{item.single_money},#{item.state})
+		</foreach>
+	</insert>
+
+	<update id="takeStore02">
+		<!--相当于for循环，依次查找与数据库相匹配的数据，并且进行更新 -->
+		<foreach collection="list" item="item" index="index" open=""
+			close="" separator=";">
+			UPDATE goods
+			SET goods_num = goods_num -
+			#{item.goods_num},time=#{item.time}
+			WHERE
+			goods_code = #{item.goods_code}
+		</foreach>
+	</update>
+	<select id="takeStore03" resultType="com.wms.model.BackOrTakeModel">
+		<foreach collection="list" item="item" index="index" open=""
+			close="" separator=";">
+		SELECT
+		goods_num,goods_code
+		FROM goods
+		where
+		goods_code=#{item.goods_code}
+		</foreach>
+	</select>
+
+
+</mapper>

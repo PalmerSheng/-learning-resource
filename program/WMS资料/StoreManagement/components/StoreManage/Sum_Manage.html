@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>库存盘点</title>
+    <link rel="stylesheet"href="../../plugins/css/layuicss.css">
+    <link rel="stylesheet"href="../../plugins/layui/css/layui.css">
+    <link rel="stylesheet" href="../../build/css/app.css" media="all">
+    <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
+    <link rel="stylesheet"href="css/Return_Manage.css">
+</head>
+<body>
+<div style="margin-left: auto;text-align: center"> <!--左外边距自适应、居中-->
+    <p style="padding: 20px;font-size: 30px;color:black;font-weight: bold">
+        库存盘点
+    </p>
+</div>
+<div style="height: auto;min-width: 1200px">
+    <form id="entryForm" lay-filter="formTest"  class="layui-form" onsubmit="return false">
+
+            <div class="button-contain layui-form">
+                <div class="layui-form-item lable-div">
+                    <label class="layui-form-label">商品号：</label>
+                    <div class="layui-input-block">
+                        <input type="text" class="layui-input" style="width:200px" id="goods_code"name="goods_code">
+                    </div>
+                </div>
+                <div class="layui-form-item lable-div">
+                    <label class="layui-form-label">商品名称：</label>
+                    <div class="layui-input-block">
+                        <input type="text" class="layui-input" style="width:200px" id="goods_name"name="goods_name 2">
+                    </div>
+                </div>
+            <button class="layui-btn layui-btn-normal right-bootom"id="select">查询</button>
+        </div>
+
+            <table id="table" class=layui-hide"></table>
+    </form>
+</div>
+</body>
+<script src="../../plugins/layui-2.3.0/layui/layui.js"></script>
+<script src="../../util/util.js"></script>
+<script src="js/Sum_Manage.js"></script>
+</html>

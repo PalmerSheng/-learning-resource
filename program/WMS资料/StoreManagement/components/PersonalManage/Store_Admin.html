@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>仓库管理员</title>
+    <link rel="stylesheet" href="../../plugins/layui/css/layui.css" media="all">
+    <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
+    <link rel="stylesheet" href="../../build/css/app.css" media="all">
+    <link rel="stylesheet" href="../../plugins/css/style.css">
+    <link rel="stylesheet" href="css/Supplier_Information_Manage.css">
+    <script src="../../plugins/layui/layui.js"></script>
+    <script src="../../util/util.js"></script>
+</head>
+
+<script type="text/html" id="btn_wraper">
+    <a class="layui-btn layui-btn-normal layui-btn-mini" lay-event="edit">修改</a>
+</script>
+<style>
+</style>
+<body>
+<div style="margin-left: auto;text-align: center">
+    <p style="padding: 20px;font-size: 30px;color:black;font-weight: bold">
+        仓库管理员
+    </p>
+</div>
+
+<div class="button-contain layui-form" style="height: auto;min-width: 1200px">
+    <div class="layui-form-item lable-div" style="width: auto">
+        <label class="layui-form-label">管理员账号:</label>
+        <div class="layui-input-block" style="width: 200px">
+            <input type="text" id="usercode" name="usercode" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item lable-div" style="width: auto">
+        <label class="layui-form-label">管理员姓名:</label>
+        <div class="layui-input-block" style="width: 200px">
+            <input type="text" id="username" name="username" class="layui-input">
+        </div>
+    </div>
+
+    <button class="layui-btn layui-btn-normal right_bootom" id="add">添加管理员信息</button>
+    <button class="layui-btn layui-btn-normal right_bootom" id="delectCheckData">删除选中信息</button>
+    <button class="layui-btn layui-btn-normal right_bootom" id="search">查询</button>
+
+
+    <table id="Admin_table" lay-filter="Admin_table"></table>
+</div>
+<form class="layui-form" id="alert_edit_form" onsubmit="return false" style="display: none">
+    <div class="layui-form-item lable-div" style="width: auto">
+        <label class="layui-form-label">仓库管理员ID:</label>
+        <div class="layui-input-block" style="width: 200px">
+            <input type="text" id="id1" name="id" placeholder="请输入库房ID " class="layui-input">
+        </div>
+    </div>
+
+
+    <div class="layui-form-item lable-div" style="width: auto">
+        <label class="layui-form-label">管理员姓名:</label>
+        <div class="layui-input-block" style="width: 200px">
+            <input type="text" id="username1" name="username" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item lable-div" style="width: auto">
+        <label class="layui-form-label">管理员密码:</label>
+        <div class="layui-input-block" style="width: 200px">
+            <input type="text" id="password1" name="password" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item lable-div" style="width: auto">
+        <label class="layui-form-label">工作单位:</label>
+        <div class="layui-input-block" style="width: 200px">
+            <input type="text" id="unit_code1" name="unit_code" class="layui-input" disabled="disabled">
+        </div>
+    </div>
+
+    <div class="layui-form-item lable-div" style="width: auto">
+        <label class="layui-form-label">级别:</label>
+        <div class="layui-input-block" style="width: 200px">
+            <input type="number" id="level" name="level" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item lable-div" style="width: auto">
+        <label class="layui-form-label">联系电话:</label>
+        <div class="layui-input-block" style="width: 200px">
+            <input type="number" id="tel1" name="tel" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item lable-div" style="width: auto">
+        <label class="layui-form-label">部门:</label>
+        <div class="layui-input-block" style="width: 200px">
+            <input type="number" id="depart1" name="depart" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item lable-div" style="width: auto">
+        <label class="layui-form-label">组:</label>
+        <div class="layui-input-block" style="width: 200px">
+            <input type="number" id="group1" name="group" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item" >
+        <div class="layui-input-block right_bootom">
+            <button class="layui-btn" lay-submit lay-filter="demo1">提交</button>
+            <button id="closeLayer" class="layui-btn layui-btn-primary">关闭</button>
+        </div>
+    </div>
+</form>
+<form class="layui-form" id="alert_add_form" onsubmit="return false" style="display: none">
+
+    <div class="layui-form-item lable-div" style="width: auto">
+        <label class="layui-form-label">管理员账号:</label>
+        <div class="layui-input-block" style="width: 200px">
+            <input type="text" id="usercode2" name="usercode" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item lable-div" style="width: auto">
+        <label class="layui-form-label">管理员姓名:</label>
+        <div class="layui-input-block" style="width: 200px">
+            <input type="text" id="username2" name="username2" class="layui-input">
+        </div>
+    </div>
+
+        <div class="layui-form-item lable-div" style="width: auto">
+        <label class="layui-form-label">管理员密码:</label>
+        <div class="layui-input-block" style="width: 200px">
+            <input type="text" id="password2" name="password" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item lable-div" style="width: auto">
+        <label class="layui-form-label">工作单位:</label>
+        <div class="layui-input-block" style="width: 200px">
+            <input type="text" id="unit_code2" name="unit_code2" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item lable-div" style="width: auto">
+        <label class="layui-form-label">级别:</label>
+        <div class="layui-input-block" style="width: 200px">
+            <input type="number" id="leve2" name="leve2" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item lable-div" style="width: auto">
+        <label class="layui-form-label">联系电话:</label>
+        <div class="layui-input-block" style="width: 200px">
+            <input type="number" id="tel2" name="tel2" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item lable-div" style="width: auto">
+        <label class="layui-form-label">部门:</label>
+        <div class="layui-input-block" style="width: 200px">
+            <input type="number" id="depart2" name="depart2" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item lable-div" style="width: auto">
+        <label class="layui-form-label">组:</label>
+        <div class="layui-input-block" style="width: 200px">
+            <input type="number" id="group2" name="group2" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item" >
+        <div class="layui-input-block right_bootom">
+            <button class="layui-btn" lay-submit lay-filter="demo2">提交</button>
+            <button id="closeLayer2" class="layui-btn layui-btn-primary">关闭</button>
+        </div>
+    </div>
+</form>
+</body>
+<script src="js/Store_Admin.js"></script>
+</html>

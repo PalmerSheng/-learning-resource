@@ -1,0 +1,31 @@
+package com.sf.controller;
+
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+
+
+@Controller
+@RequestMapping("admin")
+public class AdminController {
+
+	/*@Autowired
+	private AdminService adminService;
+	@Autowired
+	private TestController testController;*/
+	
+	/*@RequestMapping("saveInfo")
+	@ResponseBody
+	public BackMessage saveInfo(HttpServletRequest req,HttpServletResponse res,MessageDefined defined){
+		try {
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+	}
+	*/
+	
+	
+}

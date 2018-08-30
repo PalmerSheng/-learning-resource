@@ -1,0 +1,3 @@
+变量名为“JAVA_HOME”，而变量值是装jdk时的路径
+CLASSPATH  值 .;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar;(注意前面有一点)
+Path	;%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin;

@@ -1,0 +1,40 @@
+package com.wms.serviceimpl.systemsetting;
+
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.wms.common.BackMessage;
+import com.wms.mapper.storemanagement.BackOrTakeStoreMapper;
+import com.wms.mapper.systemsetting.UserMangerMapper;
+import com.wms.model.UserInfo;
+import com.wms.service.systemsetting.UserMangerService;
+
+@Service
+@SuppressWarnings("all")
+public class UserMangerServiceImpl implements UserMangerService{
+
+	@Autowired
+	private UserMangerMapper mapper;
+	
+	public BackMessage sel(HttpServletRequest req, HttpServletResponse res) {
+		// TODO Auto-generated method stub
+		
+		String usercode = this.getStr("usercode", req);
+		String username = this.getStr("username", req);
+		List<UserInfo> list = mapper.sel(username, usercode);
+		return new BackMessage(0, "用户信息", list);
+	}
+
+	private String getStr(String str, HttpServletRequest req) {
+
+		String newStr = req.getParameter(str).trim();
+		newStr = (newStr == null) ? "" : newStr;
+		return newStr;
+	}
+	
+}

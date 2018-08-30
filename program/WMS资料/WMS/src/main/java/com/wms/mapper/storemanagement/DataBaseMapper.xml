@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wms.mapper.storemanagement.DataBaseMapper">
+
+	<select id="dataBaseList" resultType="com.wms.model.DataBase">
+		SELECT
+			id,
+			url,
+			user_name,
+			pass_word,
+			driver_type,
+			db_name,
+			place,
+			duty
+		FROM
+			sqlinfo
+		WHERE
+			1=1
+		<if test="db_name!=null and db_name!=''">
+			and db_name = #{db_name}
+		</if>
+			
+	</select>
+
+</mapper>

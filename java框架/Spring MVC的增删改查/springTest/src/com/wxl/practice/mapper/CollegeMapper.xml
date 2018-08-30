@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 
+	namespace：必须与对应的接口全类名一致
+	id:必须与对应接口的某个对应的方法名一致
+ -->
+<mapper namespace="com.wxl.practice.mapper.CollegeMapper">
+
+	<!-- 根据用户的登录号和密码校验用户是否存在 -->
+	<select id="College_getCollegeInfo" resultType="com.wxl.model.CollegeInfo">
+		SELECT id,COLLEGECODE collagecode ,COLLEGENAME collagename FROM collegeinfo where 1=1
+		<if test="strCollegeName!=null and strCollegeName!=''">
+		and COLLEGENAME like '%${strCollegeName}%'
+		</if>
+		LIMIT #{offset},#{limit}
+		</select>
+		
+		<select id="College_getAllCollegeInfo"  resultType="com.wxl.model.CollegeInfo">		
+	 SELECT id,COLLEGECODE collagecode ,COLLEGENAME collagename FROM collegeinfo where 1=1
+		</select>
+	<select id="College_getTotal" resultType="int">
+	select count(COLLEGECODE) from collegeinfo where 1=1
+	<if test="strCollegeName!=null and strCollegeName!=''">
+	and COLLEGENAME like '%${strCollegeName}%'
+	</if>
+   </select>
+   <select id="College_getAllPage"  resultType="int">
+    SELECT count(*) FROM collegeinfo where 1=1
+   </select>
+   
+   <select id="TestDB" resultType="com.wxl.model.CollegeInfo">
+		SELECT id,COLLEGECODE collagecode ,COLLEGENAME collagename FROM collegeinfo where 1=1
+		</select>
+		
+		<update id="College_updCollegeInfo">
+		update collegeinfo set COLLEGECODE=#{CollegeInfo.collagecode},COLLEGENAME=#{CollegeInfo.collagename} where id=#{CollegeInfo.id}
+		
+		</update>
+		
+		<select id="Collage_getCollageId" resultType="com.wxl.model.CollegeInfo">
+		SELECT id,COLLEGECODE collagecode ,COLLEGENAME collagename FROM collegeinfo where 1=1
+		<if test="strCollageId!=null and strCollageId!=''">
+		and id=#{strCollageId}
+		</if>
+		</select>
+		<delete id="College_del" >
+		delete from collegeinfo where id = #{strCollageId}
+		</delete>
+		<insert id="College_insertInfo">
+		insert into collegeinfo(COLLEGECODE,COLLEGENAME) values(#{strCollegeCode},#{strCollegeName})
+		</insert>
+</mapper>

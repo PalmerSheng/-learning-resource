@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>供应商信息管理</title>
+    <link rel="stylesheet" href="../../plugins/layui/css/layui.css" media="all">
+    <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
+    <link rel="stylesheet" href="../../build/css/app.css" media="all">
+    <link rel="stylesheet" href="../../plugins/css/style.css">
+    <link rel="stylesheet" href="css/Supplier_Information_Manage.css">
+    <script src="../../plugins/layui/layui.js"></script>
+    <script src="../../util/util.js"></script>
+</head>
+
+<script type="text/html" id="btn_wraper">
+    <a class="layui-btn layui-btn-normal layui-btn-mini" lay-event="edit">修改</a>
+    <a class="layui-btn layui-btn-danger layui-btn-mini" lay-event="del">删除</a>
+</script>
+<style>
+</style>
+<body>
+<div style="margin-left: auto;text-align: center">
+    <p style="padding: 20px;font-size: 30px;color:black;font-weight: bold">
+        供应商信息管理
+    </p>
+</div>
+
+<div class="button-contain layui-form" style="height: auto;min-width: 1200px">
+
+    <div class="layui-form-item lable-div" style="width: auto">
+        <label class="layui-form-label">供应商账号:</label>
+        <div class="layui-input-block" style="width: 200px">
+            <input type="text" id="supply_code" name="supply_code" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item lable-div" style="width: auto">
+        <label class="layui-form-label">供应商名字:</label>
+        <div class="layui-input-block" style="width: 200px">
+            <input type="text" id="supply_name" name="supply_name" class="layui-input">
+        </div>
+    </div>
+
+    <button class="layui-btn layui-btn-normal right_bootom" id="add">添加供应商信息</button>
+    <button class="layui-btn layui-btn-normal right_bootom" id="search">查询</button>
+
+
+    <table id="supplier_table" lay-filter="supplier_table"></table>
+</div>
+<form class="layui-form" id="alert_edit_form" onsubmit="return false" style="display: none">
+    <div class="layui-form-item lable-div" style="width: auto">
+        <label class="layui-form-label">供应商ID:</label>
+        <div class="layui-input-block" style="width: 200px">
+            <input type="text" id="id1" name="id" placeholder="请输入供应商ID " class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item lable-div" style="width: auto">
+        <label class="layui-form-label">供应商名字:</label>
+        <div class="layui-input-block" style="width: 200px">
+            <input type="text" id="supply_name1" name="supply_name" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item lable-div" style="width: auto">
+        <label class="layui-form-label">联系电话:</label>
+        <div class="layui-input-block" style="width: 200px">
+            <input type="text" id="tel1" name="tel" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item lable-div" style="width: auto">
+        <label class="layui-form-label">供应商账号:</label>
+        <div class="layui-input-block" style="width: 200px">
+            <input type="text" id="supply_code1" name="supply_code" class="layui-input" disabled="disabled">
+        </div>
+    </div>
+    <div class="layui-form-item lable-div" style="width: auto">
+        <label class="layui-form-label">负责人:</label>
+        <div class="layui-input-block" style="width: 200px">
+            <input type="number" id="duty_name" name="duty_name" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item" >
+        <div class="layui-input-block right_bootom">
+            <button class="layui-btn" lay-submit lay-filter="demo1">提交</button>
+            <button id="closeLayer" class="layui-btn layui-btn-primary">关闭</button>
+        </div>
+    </div>
+</form>
+<form class="layui-form" id="alert_add_form" onsubmit="return false" style="display: none">
+    <div class="layui-form-item lable-div" style="width: auto">
+        <label class="layui-form-label">供应商ID:</label>
+        <div class="layui-input-block" style="width: 200px">
+            <input type="text" id="id2" name="id" placeholder="请输入供应商ID " class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item lable-div" style="width: auto">
+        <label class="layui-form-label">供应商名字:</label>
+        <div class="layui-input-block" style="width: 200px">
+            <input type="text" id="supply_name2" name="supply_name" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item lable-div" style="width: auto">
+        <label class="layui-form-label">联系电话:</label>
+        <div class="layui-input-block" style="width: 200px">
+            <input type="text" id="tel2" name="tel" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item lable-div" style="width: auto">
+        <label class="layui-form-label">供应商账号:</label>
+        <div class="layui-input-block" style="width: 200px">
+            <input type="text" id="supply_code2" name="supply_code" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item lable-div" style="width: auto">
+        <label class="layui-form-label">负责人:</label>
+        <div class="layui-input-block" style="width: 200px">
+            <input type="text" id="duty_name2" name="duty_name" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item" >
+        <div class="layui-input-block right_bootom">
+            <button class="layui-btn" lay-submit lay-filter="demo2">提交</button>
+            <button id="closeLayer2" class="layui-btn layui-btn-primary">关闭</button>
+        </div>
+    </div>
+</form>
+</body>
+<script src="js/Supplier_information_Manage.js"></script>
+</html>
